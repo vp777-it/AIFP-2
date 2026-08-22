@@ -12,7 +12,8 @@
 | Gate | Status | Acceptance evidence |
 |---|---|---|
 | Protocol and object schemas | **Candidate** | Specification and schemas reviewed together |
-| x402 v2 EVM exact-payment adapter | **Candidate** | Conformance tests for v2 headers, CAIP-2 and EIP-3009 |
+| x402 v2 EVM exact-payment adapter (SDK scope) | **Complete** | Merged source and named tests for v2 headers, CAIP-2 and EIP-3009 |
+| Cross-component x402 v2 route | **Blocked** | SDK, backend, verifier, settlement, receipt and protected-resource E2E |
 | Canonical EVM `0/0` contract profile | **Candidate** | Frozen source, independent review, bytecode/runtime pin |
 | Backend transaction-plan ABI parity | **Blocked** | Generated calldata matches the deployed contract ABI |
 | Invoice → settlement → receipt lifecycle | **Blocked** | Durable state and receipt issuance after verified settlement |
@@ -33,4 +34,3 @@
 5. Apply the same evidence contract to additional networks one at a time.
 
 No network is promoted because a contract address exists. Promotion requires current, reproducible, cross-component evidence.
-
