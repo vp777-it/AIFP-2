@@ -2,7 +2,7 @@
   <img src="assets/brand/aifp-2-hero-light.jpg" alt="AiFinPay AIFP-2 Agent Payment Protocol" width="900" />
 </p>
 
-<h1 align="center">AiFinPay AIFP-2 Agent Payment Protocol</h1>
+<h1 align="center">AiFinPay AIFP-2 Protocol</h1>
 
 <p align="center">
   <strong>Programmable, x402-compatible payments for autonomous agents, APIs, MCP tools and digital services.</strong>
@@ -113,6 +113,7 @@ The implementation program spans thirteen network surfaces: nine EVM networks pl
 | SDK, MCP and server integration | [Integration guide](docs/integration-guide.md) |
 | Threats and required controls | [Security model](docs/security-model.md) |
 | Evidence required before activation | [Deployment evidence](docs/deployment-evidence.md) |
+| Code ownership and real implementation status | [Implementation map](docs/implementation-map.md) |
 | Machine-readable API | [OpenAPI 3.1](spec/openapi.yaml) |
 | Machine-readable objects | [JSON Schemas](schemas/) |
 
@@ -120,13 +121,16 @@ The implementation program spans thirteen network surfaces: nine EVM networks pl
 
 This repository is the public protocol, schema and integration contract for AIFP-2. It does not make an unverified deployment production-ready.
 
-Current implementation work lives in:
+Current implementation work is split across several repositories:
 
 - [Agent SDK and MCP](https://github.com/AiFinPay/sdk)
 - [EVM contracts](https://github.com/AiFinPay/evm-contract)
 - [Solana program](https://github.com/AiFinPay/solana-contract)
+- [Stellar x402 facilitator](https://github.com/AiFinPay/stellar-x402-facilitator)
 - [Casper contract](https://github.com/AiFinPay/casper-contract)
 - [AiFinPay web/backend](https://github.com/AiFinPay/aifinpay-web)
+
+The SDK `main` branch contains the x402 v2 EVM transport/profile and its named regression tests. That is implementation evidence for the SDK component, not proof that the complete payment system is production-live. See the [implementation map](docs/implementation-map.md) for canonical, private, legacy and experimental source boundaries.
 
 Production activation requires at least one canonical route to pass contract, SDK, backend, verifier, receipt, ledger/indexer and protected-resource E2E acceptance.
 
@@ -149,10 +153,12 @@ flowchart TD
 | **AIFP-2** | Executes programmable agent and machine-to-machine payments |
 | [AIFP-3](https://github.com/AiFinPay/AIFP-3) | Portable agent identity, wallet bindings and status |
 | [AIFP-4](https://github.com/AiFinPay/AIFP-4) | Connects approved agent instructions to banking and SWIFT rails |
-| AIFP-5 | Provides classical, hybrid and post-quantum authorization profiles |
-| AIFP-6 | Applies organizational policy, delegation, approvals and audit rules |
+| [AIFP-5](https://github.com/AiFinPay/AIFP-5-Quantum-Safe-Financial-Protocol)¹ | Provides classical, hybrid and post-quantum authorization profiles |
+| [AIFP-6](https://github.com/AiFinPay/AIFP-6-Agentic-Financial-Governance-Protocol)¹ | Applies organizational policy, delegation, approvals and audit rules |
 
 Each layer can be adopted independently. AIFP-3 is not required for baseline x402 interoperability; when present, it provides stronger identity and policy binding.
+
+¹ AIFP-5 and AIFP-6 are currently private repositories; the links resolve for authorized organization members.
 
 ## License
 
