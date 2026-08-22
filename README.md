@@ -2,7 +2,7 @@
   <img src="assets/brand/aifp-2-hero-light.jpg" alt="AiFinPay AIFP-2 Agent Payment Protocol" width="900" />
 </p>
 
-<h1 align="center">AiFinPay AIFP-2 Protocol</h1>
+<h1 align="center">AiFinPay AIFP-2 Agent Payment Protocol</h1>
 
 <p align="center">
   <strong>Programmable, x402-compatible payments for autonomous agents, APIs, MCP tools and digital services.</strong>
