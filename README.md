@@ -130,7 +130,7 @@ Current implementation work is split across several repositories:
 - [Casper contract](https://github.com/AiFinPay/casper-contract)
 - [AiFinPay web/backend](https://github.com/AiFinPay/aifinpay-web)
 
-The SDK `main` branch contains the x402 v2 EVM transport/profile and its named regression tests. That is implementation evidence for the SDK component, not proof that the complete payment system is production-live. See the [implementation map](docs/implementation-map.md) for canonical, private, legacy and experimental source boundaries.
+The SDK `main` branch contains the x402 v2 EVM transport/profile, its named regression tests and the merged SDK/MCP settlement RC from PR #26. The 13-network backend control plane remains an open stacked source RC in `aifinpay-web` PR #22. Canonical settlement contract candidates remain open in EVM PR #9, Solana PR #4 and Casper PR #13. These are component/source milestones, not proof that the complete payment system is production-live. See the [implementation map](docs/implementation-map.md).
 
 Production activation requires at least one canonical route to pass contract, SDK, backend, verifier, receipt, ledger/indexer and protected-resource E2E acceptance.
 
