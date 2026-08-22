@@ -37,15 +37,16 @@ An older note cannot override a newer approved economic or identity model. A dep
 | Surface | Repository / source | Current role | Status boundary |
 |---|---|---|---|
 | Public protocol | [`AiFinPay/AIFP-2`](https://github.com/AiFinPay/AIFP-2) | Normative behavior, schemas, architecture and acceptance rules | Draft 0.1; not a runtime |
-| Agent SDK + MCP | [`AiFinPay/sdk`](https://github.com/AiFinPay/sdk) | Client payment flow and facilitator adapters | x402 v2 EVM adapter and named tests are merged on `main`; broader route acceptance is separate |
+| Agent SDK + MCP | [`AiFinPay/sdk`](https://github.com/AiFinPay/sdk) | Client payment flow and facilitator adapters | x402 v2 EVM adapter/tests and settlement RC PR #26 are merged; package rollout and paid route acceptance are separate |
 | x402 v2 adapter | [`standard-x402.ts`](https://github.com/AiFinPay/sdk/blob/main/node/src/facilitators/standard-x402.ts) | `PAYMENT-REQUIRED`, `PAYMENT-SIGNATURE`, CAIP-2, EIP-3009 and legacy-v1 compatibility | Non-EVM standard offers currently fail closed |
 | x402 conformance tests | [`x402-v2-is-named.test.ts`](https://github.com/AiFinPay/sdk/blob/main/node/tests/x402-v2-is-named.test.ts) | Transport and EVM exact-payment regression checks | Unit/conformance evidence, not paid E2E evidence |
-| Platform/backend | `AiFinPay/aifinpay-web` (private) | HTTP gate, transaction planning, verification, receipt and platform integration | Must be reconciled with contract ABI and durable financial state |
-| EVM settlement | [`AiFinPay/evm-contract`](https://github.com/AiFinPay/evm-contract) | `B2BSplitter` and EVM settlement surfaces | Deployed/history evidence exists; canonical `0/0` route acceptance remains gated |
-| Solana | [`AiFinPay/solana-contract`](https://github.com/AiFinPay/solana-contract) | Solana payment program | Source/deployed instruction parity and paid E2E must be proven before activation |
+| Platform/backend | [`AiFinPay/aifinpay-web` PR #22](https://github.com/AiFinPay/aifinpay-web/pull/22) (private) | Unified 13-network route discovery/invoice control plane | Open stacked source RC, currently dependent on PR #17 and not mergeable; not deployed/live |
+| EVM settlement | [`AiFinPay/evm-contract` PR #9](https://github.com/AiFinPay/evm-contract/pull/9) | Immutable v1.3 `100/0` and `0/0` route profiles | Open source candidate; human review, deployment, runtime readback and paid E2E pending |
+| Solana | [`AiFinPay/solana-contract` PR #4](https://github.com/AiFinPay/solana-contract/pull/4) | New settlement-only program with AIFP-1 and AIFP-2 profiles | Open source-level production RC; new deploy/config/E2E/unpause pending |
 | Stellar facilitator | [`AiFinPay/stellar-x402-facilitator`](https://github.com/AiFinPay/stellar-x402-facilitator) | Planned self-hostable Stellar x402 facilitator | Design / implementation-ready proposal; not a production facilitator |
 | Stellar contracts | `AiFinPay/stellar-contract` (private) | Soroban settlement and passport-related experiments | Separate implementation surface; requires protocol conformance and deployment evidence |
-| Casper | [`AiFinPay/casper-contract`](https://github.com/AiFinPay/casper-contract) | Casper settlement implementation | Contract existence does not establish AIFP-2 paid E2E |
+| Casper | [`AiFinPay/casper-contract` PR #13](https://github.com/AiFinPay/casper-contract/pull/13) | Canonical native-CSPR settlement v3 | Open source-level production RC; deployment, review and paid E2E pending |
+| NEAR / Aptos candidates | backend RC branch under `release-candidates/non-evm/` | Native-only replacement candidates | Source/CI candidates; no production activation or token-path claim |
 
 ## Legacy and experimental surfaces
 
@@ -60,6 +61,9 @@ An older note cannot override a newer approved economic or identity model. A dep
 | Claim | Current evidence | Allowed wording |
 |---|---|---|
 | x402 v2 EVM transport/profile exists | Merged SDK source and tests | **Implemented in SDK scope** |
+| SDK/MCP settlement v2 RC exists | SDK PR #26 merged to `main` | **Source RC merged; publication/deployment/E2E pending** |
+| 13-network backend control plane exists | Backend PR #22 | **Open stacked source RC; not merged or deployed** |
+| Canonical EVM/Solana/Casper settlement candidates exist | Contract PRs #9/#4/#13 | **Open source RCs; routes remain disabled** |
 | Multiple contract/program deployments exist | Repository and deployment evidence | **Deployed surfaces exist** |
 | Read-only and partial payment adapters exist across networks | SDK/contracts and historical audit evidence | **Partial network support** |
 | One clean canonical paid vertical slice passes SDK → backend → contract → verifier → receipt → protected resource | Not yet published as current reproducible acceptance evidence | **Not accepted / production gate open** |
