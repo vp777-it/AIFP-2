@@ -27,8 +27,8 @@ flowchart TD
 | [AIFP-2](https://github.com/AiFinPay/AIFP-2) | Executes programmable agent and machine-to-machine payments; provides an x402 v2 compatibility profile | Provider-defined price; current AiFinPay fee 0%; creator 0% | Draft protocol and source candidates; production activation gated |
 | [AIFP-3](https://github.com/AiFinPay/AIFP-3) | Portable Agent Passport: identity, holder/issuer keys, status, permissions, reputation and multi-wallet bindings | Identity and permission layer; no payment fee | vNext implementation candidate; chain migration and E2E pending |
 | [AIFP-4](https://github.com/AiFinPay/AIFP-4) | Connects approved agent instructions to banking, treasury and SWIFT rails through appropriate licensed providers | Organization policy and provider terms | Draft/reference foundation; live corridors require partners and approvals |
-| AIFP-5 | Adds crypto-agile classical, hybrid and post-quantum authorization profiles | Security mode: `CLASSICAL_ONLY`, `HYBRID_REQUIRED`, `PQ_ONLY` | Draft experimental protocol; no production deployment |
-| AIFP-6 | Applies machine-readable authority, limits, delegation, approvals, emergency controls and audit rules | Returns `ALLOW`, `DENY` or `REQUIRE_APPROVAL` | Draft/reference policy engine; no production service |
+| [AIFP-5](https://github.com/AiFinPay/AIFP-5-Quantum-Safe-Financial-Protocol)¹ | Adds crypto-agile classical, hybrid and post-quantum authorization profiles | Security mode: `CLASSICAL_ONLY`, `HYBRID_REQUIRED`, `PQ_ONLY` | Private draft/reference implementation; no production deployment |
+| [AIFP-6](https://github.com/AiFinPay/AIFP-6-Agentic-Financial-Governance-Protocol)¹ | Applies machine-readable authority, limits, delegation, approvals, emergency controls and audit rules | Returns `ALLOW`, `DENY` or `REQUIRE_APPROVAL` | Private draft/reference policy engine; no production service |
 
 ## Boundaries
 
@@ -39,6 +39,8 @@ flowchart TD
 - AIFP-6 decides whether an action is allowed; AIFP-5 proves the authorization; AIFP-1, AIFP-2 or AIFP-4 executes it.
 - A protocol specification, reference implementation and production-live route are separate status claims.
 
+¹ AIFP-5 and AIFP-6 links require authorized organization access while those repositories remain private.
+
 ## Shared invariants
 
 1. Private keys stay inside the holder or wallet trust boundary.
@@ -47,4 +49,3 @@ flowchart TD
 4. Unknown status, stale evidence or ambiguous route identity fails closed.
 5. Receipts are issued after authoritative verification.
 6. Production claims require reproducible artifacts, independent review and real E2E evidence.
-
