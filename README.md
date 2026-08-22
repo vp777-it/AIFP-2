@@ -128,7 +128,7 @@ Current implementation work is split across several repositories:
 - [Solana program](https://github.com/AiFinPay/solana-contract)
 - [Stellar x402 facilitator](https://github.com/AiFinPay/stellar-x402-facilitator)
 - [Casper contract](https://github.com/AiFinPay/casper-contract)
-- [AiFinPay web/backend](https://github.com/AiFinPay/aifinpay-web)
+- AiFinPay web/backend — private implementation lane
 
 The SDK `main` branch contains the x402 v2 EVM transport/profile, its named regression tests and the merged SDK/MCP settlement RC from PR #26. The 13-network backend control plane remains an open stacked source RC in `aifinpay-web` PR #22. Canonical settlement contract candidates remain open in EVM PR #9, Solana PR #4 and Casper PR #13. These are component/source milestones, not proof that the complete payment system is production-live. See the [implementation map](docs/implementation-map.md).
 
@@ -152,9 +152,9 @@ flowchart TD
 | [AIFP-1](https://github.com/AiFinPay/AIFP-1) | Monetizes AI-agent access to merchant resources |
 | **AIFP-2** | Executes programmable agent and machine-to-machine payments |
 | [AIFP-3](https://github.com/AiFinPay/AIFP-3) | Portable agent identity, wallet bindings and status |
-| [AIFP-4](https://github.com/AiFinPay/AIFP-4) | Connects approved agent instructions to banking and SWIFT rails |
-| [AIFP-5](https://github.com/AiFinPay/AIFP-5-Quantum-Safe-Financial-Protocol)¹ | Provides classical, hybrid and post-quantum authorization profiles |
-| [AIFP-6](https://github.com/AiFinPay/AIFP-6-Agentic-Financial-Governance-Protocol)¹ | Applies organizational policy, delegation, approvals and audit rules |
+| [AIFP-4](https://github.com/AiFinPay/AIFP-4) | Connects approved agent instructions to banking and SWIFT rails through licensed fintech and banking partners |
+| [AIFP-5](https://github.com/AiFinPay/AIFP-5-Quantum-Safe-Financial-Protocol)¹ | Post-quantum security layer: PQ signatures, quantum-resistant key exchange and crypto-agility across the ecosystem |
+| [AIFP-6](https://github.com/AiFinPay/AIFP-6-Agentic-Financial-Governance-Protocol)¹ | Governance for institutional, banking and government agents: policy rules, roles, limits, compliance and audit trail |
 
 Each layer can be adopted independently. AIFP-3 is not required for baseline x402 interoperability; when present, it provides stronger identity and policy binding.
 

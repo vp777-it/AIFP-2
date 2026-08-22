@@ -27,8 +27,8 @@ flowchart TD
 | [AIFP-2](https://github.com/AiFinPay/AIFP-2) | Executes programmable agent and machine-to-machine payments; provides an x402 v2 compatibility profile | Provider-defined price; current AiFinPay fee 0%; creator 0% | Draft protocol and source candidates; production activation gated |
 | [AIFP-3](https://github.com/AiFinPay/AIFP-3) | Portable Agent Passport: identity, holder/issuer keys, status, permissions, reputation and multi-wallet bindings | Identity and permission layer; no payment fee | vNext implementation candidate; chain migration and E2E pending |
 | [AIFP-4](https://github.com/AiFinPay/AIFP-4) | Connects approved agent instructions to banking, treasury and SWIFT rails through appropriate licensed providers | Organization policy and provider terms | Draft/reference foundation; live corridors require partners and approvals |
-| [AIFP-5](https://github.com/AiFinPay/AIFP-5-Quantum-Safe-Financial-Protocol)¹ | Adds crypto-agile classical, hybrid and post-quantum authorization profiles | Security mode: `CLASSICAL_ONLY`, `HYBRID_REQUIRED`, `PQ_ONLY` | Private draft/reference implementation; no production deployment |
-| [AIFP-6](https://github.com/AiFinPay/AIFP-6-Agentic-Financial-Governance-Protocol)¹ | Applies machine-readable authority, limits, delegation, approvals, emergency controls and audit rules | Returns `ALLOW`, `DENY` or `REQUIRE_APPROVAL` | Private draft/reference policy engine; no production service |
+| [AIFP-5](https://github.com/AiFinPay/AIFP-5-Quantum-Safe-Financial-Protocol)¹ | Post-quantum security layer for the ecosystem: PQ signatures, quantum-resistant key exchange, crypto-agility | Security mode: `CLASSICAL_ONLY`, `HYBRID_REQUIRED`, `PQ_ONLY` | Private draft/reference implementation; no production deployment |
+| [AIFP-6](https://github.com/AiFinPay/AIFP-6-Agentic-Financial-Governance-Protocol)¹ | Governance for institutional, banking and government agents: authority, limits, delegation, approvals, emergency controls, audit | Returns `ALLOW`, `DENY` or `REQUIRE_APPROVAL` | Private draft/reference policy engine; no production service |
 
 ## Boundaries
 

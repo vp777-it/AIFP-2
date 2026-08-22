@@ -26,6 +26,6 @@
 | Resource monetization | AIFP-1 | quote, quota/access receipt |
 | Payment execution | **AIFP-2** | verified settlement receipt |
 | Agent identity | AIFP-3 | portable identity and wallet bindings |
-| Banking execution | AIFP-4 | approved banking/SWIFT instruction |
+| Banking execution | AIFP-4 | approved banking/SWIFT instruction, executed by licensed partners |
 | Cryptographic authorization | AIFP-5 | classical/hybrid/PQ authorization |
 | Financial governance | AIFP-6 | allow, deny or require approval |
