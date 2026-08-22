@@ -2,6 +2,8 @@
 
 ## Build with the protocol
 
+- See how AIFP-2 fits into the [six-protocol AiFinPay architecture](protocol-family.md).
+
 1. Read the [overview](overview.md).
 2. Implement the [normative protocol](protocol-specification.md).
 3. Choose native AIFP-2 or the [x402 v2 compatibility profile](x402-compatibility.md).
@@ -26,4 +28,3 @@
 | Banking execution | AIFP-4 | approved banking/SWIFT instruction |
 | Cryptographic authorization | AIFP-5 | classical/hybrid/PQ authorization |
 | Financial governance | AIFP-6 | allow, deny or require approval |
-

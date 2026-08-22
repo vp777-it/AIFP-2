@@ -1,5 +1,5 @@
 /**
- * Illustrative AIFP-2/x402 v2 request loop.
+ * Illustrative AIFP-2 request loop using the x402 v2 compatibility profile.
  * Use the released AiFinPay SDK for production signing and route validation.
  */
 const resource = "https://api.example.com/v1/report";
@@ -29,4 +29,3 @@ console.log(await paid.json());
 async function localWalletSign(_requirements: unknown): Promise<string> {
   throw new Error("Connect this example to the AiFinPay SDK local signer");
 }
-

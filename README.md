@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/brand/aifp-2-protocol.svg" alt="AIFP-2 Protocol" width="760" />
+  <img src="assets/brand/aifp-2-hero-light.jpg" alt="AiFinPay AIFP-2 Agent Payment Protocol" width="900" />
 </p>
 
 <h1 align="center">AiFinPay AIFP-2 Protocol</h1>
@@ -12,7 +12,14 @@
   <a href="docs/index.md"><img alt="Documentation" src="https://img.shields.io/badge/docs-protocol%20portal-2F5FD6?style=for-the-badge"></a>
   <a href="docs/protocol-specification.md"><img alt="Specification" src="https://img.shields.io/badge/spec-AIFP--2%20Draft%200.1-14B8A6?style=for-the-badge"></a>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0%20%2B%20CC--BY--4.0-0B1020?style=for-the-badge"></a>
-  <a href="ROADMAP.md"><img alt="Status" src="https://img.shields.io/badge/release-production%20NO--GO-F59E0B?style=for-the-badge"></a>
+  <a href="ROADMAP.md"><img alt="Status" src="https://img.shields.io/badge/status-draft%200.1-F59E0B?style=for-the-badge"></a>
+</p>
+
+<p align="center">
+  <a href="https://aifinpay.io">Website</a> ·
+  <a href="docs/index.md">Documentation</a> ·
+  <a href="https://github.com/AiFinPay/sdk">SDK &amp; MCP</a> ·
+  <a href="https://mcp.aifinpay.io/mcp">MCP endpoint</a>
 </p>
 
 ---
@@ -52,7 +59,7 @@ request protected resource
 
 | Route | Merchant/provider amount | AiFinPay protocol fee | Creator/referral fee |
 |---|---:|---:|---:|
-| **AIFP-2 / x402** | Provider-defined | **0% / 0 bps** | **0% / 0 bps** |
+| **AIFP-2 with x402-compatible execution** | Provider-defined | **0% / 0 bps** | **0% / 0 bps** |
 | **AIFP-1 monetization** | Published action price | **1% / 100 bps, gross-inclusive** | 0% |
 
 AIFP-2 must not silently fall back to AIFP-1 economics. Route class and fee profile are bound into the quote, transaction plan and receipt.
@@ -71,19 +78,18 @@ The current EVM profile uses CAIP-2 network identifiers and EIP-3009 `TransferWi
 
 ## Network surfaces
 
-<p align="center">
-  <img src="https://cdn.simpleicons.org/polygon/8247E5" alt="Polygon" width="38" title="Polygon" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/avalanche/E84142" alt="Avalanche" width="38" title="Avalanche" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/arbitrum/28A0F0" alt="Arbitrum" width="38" title="Arbitrum" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/bnbchain/F3BA2F" alt="BNB Chain" width="38" title="BNB Chain" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/base/0052FF" alt="Base" width="38" title="Base" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/optimism/FF0420" alt="Optimism" width="38" title="Optimism" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/solana/14F195" alt="Solana" width="38" title="Solana" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/near/000000" alt="NEAR" width="38" title="NEAR" />&nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/aptos/000000" alt="Aptos" width="38" title="Aptos" />
-</p>
+<table align="center">
+  <tr>
+    <td align="center"><img src="assets/networks/polygon.svg" alt="Polygon" width="34" /><br /><sub>Polygon</sub></td>
+    <td align="center"><img src="assets/networks/avalanche.svg" alt="Avalanche" width="34" /><br /><sub>Avalanche</sub></td>
+    <td align="center"><img src="assets/networks/bnbchain.svg" alt="BNB Chain" width="34" /><br /><sub>BNB Chain</sub></td>
+    <td align="center"><img src="assets/networks/optimism.svg" alt="Optimism" width="34" /><br /><sub>Optimism</sub></td>
+    <td align="center"><img src="assets/networks/solana.svg" alt="Solana" width="34" /><br /><sub>Solana</sub></td>
+    <td align="center"><img src="assets/networks/near.svg" alt="NEAR" width="34" /><br /><sub>NEAR</sub></td>
+  </tr>
+</table>
 
-AiFinPay has contract or program work across thirteen network surfaces: nine EVM networks plus Solana, NEAR, Aptos and Casper. This is not a claim of equal production readiness. The canonical AIFP-2 `0/0` route remains disabled until a deployment has source provenance, runtime verification, exact asset configuration and a real paid end-to-end acceptance record. See the [network matrix](docs/network-matrix.md) and [deployment evidence rules](docs/deployment-evidence.md).
+The implementation program spans thirteen network surfaces: nine EVM networks plus Solana, NEAR, Aptos and Casper. Status is tracked per route; the number of network adapters or historical deployments does not imply feature parity or global production activation. See the [network matrix](docs/network-matrix.md) and [deployment evidence rules](docs/deployment-evidence.md).
 
 ## Core security invariants
 
@@ -122,9 +128,11 @@ Current implementation work lives in:
 - [Casper contract](https://github.com/AiFinPay/casper-contract)
 - [AiFinPay web/backend](https://github.com/AiFinPay/aifinpay-web)
 
-The release stays **production NO-GO** until one canonical route passes contract, SDK, backend, verifier, receipt, ledger/indexer and protected-resource E2E acceptance.
+Production activation requires at least one canonical route to pass contract, SDK, backend, verifier, receipt, ledger/indexer and protected-resource E2E acceptance.
 
 ## One system, six protocols
+
+See the complete [AiFinPay protocol-family architecture](docs/protocol-family.md).
 
 ```mermaid
 flowchart TD
@@ -149,4 +157,3 @@ Each layer can be adopted independently. AIFP-3 is not required for baseline x40
 ## License
 
 Code, examples, schemas and machine-readable artifacts are licensed under Apache License 2.0. Documentation and prose specifications are licensed under CC BY 4.0 unless a file states otherwise. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
-
