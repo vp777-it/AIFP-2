@@ -1,0 +1,121 @@
+openapi: 3.1.0
+info:
+  title: AiFinPay AIFP-2 Settlement API
+  version: 0.1.0
+  description: Draft machine-readable interface for AIFP-2 route discovery, invoices, confirmation and receipts.
+  license:
+    name: Apache-2.0
+    identifier: Apache-2.0
+servers:
+  - url: https://aifinpay.io
+paths:
+  /v1/settlement/routes:
+    get:
+      summary: List currently advertised settlement routes
+      parameters:
+        - in: query
+          name: route_class
+          schema: { type: string, const: AIFP-2 }
+      responses:
+        '200':
+          description: Routes the active verifier can validate
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [routes]
+                properties:
+                  routes:
+                    type: array
+                    items: { $ref: '#/components/schemas/Route' }
+  /v1/settlement/invoice:
+    post:
+      summary: Create a binding AIFP-2 invoice and unsigned transaction plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/InvoiceRequest' }
+      responses:
+        '201':
+          description: Persisted invoice
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Invoice' }
+        '409': { description: Idempotency conflict }
+  /v1/settlement/confirm:
+    post:
+      summary: Submit a settlement reference for authoritative verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [payment_id, settlement_ref]
+              properties:
+                payment_id: { type: string, pattern: '^0x[0-9a-fA-F]{64}$' }
+                settlement_ref: { type: string, minLength: 16 }
+      responses:
+        '200':
+          description: Verified receipt or pending state
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaymentStatus' }
+  /v1/settlement/{payment_id}:
+    get:
+      summary: Read payment and receipt state
+      parameters:
+        - in: path
+          name: payment_id
+          required: true
+          schema: { type: string, pattern: '^0x[0-9a-fA-F]{64}$' }
+      responses:
+        '200':
+          description: Current state
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaymentStatus' }
+components:
+  schemas:
+    Route:
+      type: object
+      required: [route_class, network, status, fee_bps]
+      properties:
+        route_class: { type: string, const: AIFP-2 }
+        network: { type: string, examples: ['eip155:137'] }
+        status: { type: string, enum: [DEPLOYED_DISABLED, VERIFIED_DISABLED, E2E_ACCEPTED, PAYMENTS_LIVE] }
+        fee_bps: { type: integer, const: 0 }
+        assets:
+          type: array
+          items: { type: string }
+    InvoiceRequest:
+      type: object
+      required: [network, asset, amount_atomic, pay_to, resource, order_id]
+      properties:
+        network: { type: string }
+        asset: { type: string }
+        amount_atomic: { type: string, pattern: '^[1-9][0-9]*$' }
+        pay_to: { type: string }
+        resource: { type: string }
+        order_id: { type: string, minLength: 1, maxLength: 128 }
+    Invoice:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceRequest'
+        - type: object
+          required: [protocol, version, payment_id, fee_bps, expires_at, transaction]
+          properties:
+            protocol: { type: string, const: AIFP-2 }
+            version: { type: string, const: '0.1' }
+            payment_id: { type: string, pattern: '^0x[0-9a-fA-F]{64}$' }
+            fee_bps: { type: integer, const: 0 }
+            expires_at: { type: string, format: date-time }
+            transaction: { type: object, additionalProperties: true }
+    PaymentStatus:
+      type: object
+      required: [payment_id, status]
+      properties:
+        payment_id: { type: string }
+        status: { type: string, enum: [PENDING, CONFIRMING, VERIFIED, RECEIPT_ISSUED, FAILED, RECONCILING] }
+        receipt: { type: object, additionalProperties: true }
+

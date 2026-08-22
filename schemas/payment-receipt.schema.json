@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifinpay.io/schemas/aifp-2/payment-receipt.schema.json",
+  "title": "AIFP-2 Payment Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "version", "payment_id", "resource", "network", "asset", "amount_atomic", "pay_to", "settlement_ref", "issued_at", "expires_at", "issuer", "kid", "signature"],
+  "properties": {
+    "protocol": { "const": "AIFP-2" },
+    "version": { "const": "0.1" },
+    "payment_id": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },
+    "resource": { "type": "string" },
+    "network": { "type": "string" },
+    "asset": { "type": "string" },
+    "amount_atomic": { "type": "string", "pattern": "^[1-9][0-9]*$" },
+    "pay_to": { "type": "string" },
+    "settlement_ref": { "type": "string" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "issuer": { "type": "string" },
+    "kid": { "type": "string" },
+    "signature": { "type": "string", "minLength": 32 }
+  }
+}
+
