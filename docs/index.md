@@ -7,6 +7,7 @@
 1. Read the [overview](overview.md).
 2. Implement the [normative protocol](protocol-specification.md).
 3. Choose native AIFP-2 or the [x402 v2 compatibility profile](x402-compatibility.md).
+4. Check the [implementation map](implementation-map.md) before making a readiness or ownership claim.
 4. Follow the [integration guide](integration-guide.md).
 5. Validate against the [security model](security-model.md).
 6. Do not activate a route until its [deployment evidence](deployment-evidence.md) is complete.
